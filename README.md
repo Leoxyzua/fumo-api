@@ -11,7 +11,7 @@ Install is simple, just use `npm i fumo-api`
 * [fumo-api](#module_fumo-api)
     * [.allFumos()](#module_fumo-api.allFumos) ⇒ <code>Object</code>
     * [.getFumoByID(id, [allData])](#module_fumo-api.getFumoByID) ⇒ <code>String</code> \| <code>Object</code>
-    * [.randomFumo([allData])](#module_fumo-api.randomFumo) ⇒ <code>Object</code> \| <code>String</code>
+    * [.randomFumo([allData])](#module_fumo-api.randomFumo) ⇒ <code>String</code> \| <code>Object</code>
 
 <a name="module_fumo-api.allFumos"></a>
 

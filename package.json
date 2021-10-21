@@ -1,7 +1,7 @@
 {
   "name": "fumo-api",
   "version": "3.0.1",
-  "description": "an api to obtain images of fumos",
+  "description": "An api to obtain images of fumos",
   "main": "src/index.js",
   "types": "./types/index.d.ts",
   "scripts": {
