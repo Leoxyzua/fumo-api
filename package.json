@@ -2,14 +2,14 @@
   "name": "fumo-api",
   "version": "3.0.1",
   "description": "An api to obtain images of fumos",
-  "main": "src/index.js",
-  "types": "./types/index.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
-    "test": "node tests/test.js"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Nosesisaid/fumo-api.git"
+    "url": "git+https://github.com/Leoxyzua/fumo-api.git"
   },
   "keywords": [
     "fumo",
@@ -19,14 +19,15 @@
   "author": "Vic",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Nosesisaid/fumo-api/issues"
+    "url": "https://github.com/Leoxyzua/fumo-api/issues"
   },
   "type": "commonjs",
-  "homepage": "https://github.com/Nosesisaid/fumo-api#readme",
+  "homepage": "https://github.com/Leoxyzua/fumo-api#readme",
   "dependencies": {
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
-    "@types/node-fetch": "^2.5.12"
+    "@types/node-fetch": "^2.5.12",
+    "tslib": "^2.3.1"
   }
 }
