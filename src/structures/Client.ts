@@ -27,11 +27,13 @@ export class FumoClient {
 
     /** Request to the fumo api */
     async request<T extends boolean>(path: string):
-        Promise<T extends true
+        Promise<(T extends true
             ? FumoData[]
-            : FumoData> {
-
+            : FumoData) | undefined> {
         const res = await fetch(`${this.url}/${path}`);
+        if (res.headers.get("content-type") !== 'application/json'
+            && path.includes('/')) return;
+
         return await res.json();
     }
 
@@ -46,7 +48,8 @@ export class FumoClient {
 
     /** Request for all the fumos in the fumo-api */
     async fetchFumos() {
-        return await this.request<true>("fumos");
+        const data = await this.request<true>("fumos");
+        return data!;
     }
 
     /** Request for a fumo by its ID */
@@ -56,6 +59,7 @@ export class FumoClient {
 
     /** Request a random fumo */
     async fetchRandomFumo() {
-        return await this.request<false>("fumos/random");
+        const data = await this.request<false>("random");
+        return data!;
     }
 }
