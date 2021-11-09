@@ -14,6 +14,6 @@ const client = new FumoClient(true);
 
 // Wait a bit for the fumos to get cached
 setTimeout(function () {
-    console.log(`Random fumo: ${client.random.URL}`)
+    console.log(`Random fumo: ${client.cache.random.URL}`)
 }, 2500)
 ```
