@@ -8,7 +8,7 @@ const node_fetch_1 = tslib_1.__importDefault(require("node-fetch"));
 class FumoClient {
     constructor(fetchAllFumos) {
         this.cache = new Cache_1.FumoCache();
-        this.url = 'http://fumoapi.herokuapp.com';
+        this.url = 'https://fumoapi.herokuapp.com';
         this.fetchAllFumos = fetchAllFumos ?? true;
         if (this.fetchAllFumos)
             this.updateFumoCache();

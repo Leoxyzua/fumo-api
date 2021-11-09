@@ -17,7 +17,7 @@ export class FumoClient {
     /** The fumo cache, it will be empty if `fetchAllFumos` is set to false. */
     public cache: FumoCache<FumoData> = new FumoCache();;
     /** The fumo api URl */
-    public url = 'http://fumoapi.herokuapp.com';
+    public url = 'https://fumoapi.herokuapp.com';
 
     constructor(fetchAllFumos?: boolean) {
         this.fetchAllFumos = fetchAllFumos ?? true;
