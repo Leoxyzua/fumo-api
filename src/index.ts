@@ -18,16 +18,12 @@ export class FumoClient {
         if (this.fetchAllFumos) this.updateFumoCache();
     }
 
-    get allFumos() {
+    get list() {
         return [...this.cache.values()];
     }
 
-    get randomFumo() {
-        return this.allFumos[Math.floor(Math.random() * this.allFumos.length)];
-    }
-
-    getFumo(id: string) {
-        return this.cache.get(id);
+    get random() {
+        return this.list[Math.floor(Math.random() * this.list.length)];
     }
 
     async request<T extends boolean>(path: string):
