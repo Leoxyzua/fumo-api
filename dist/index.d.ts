@@ -8,9 +8,8 @@ export declare class FumoClient {
     cache: Map<string, FumoData>;
     private url;
     constructor(fetchAllFumos?: boolean);
-    get allFumos(): FumoData[];
-    get randomFumo(): FumoData;
-    getFumo(id: string): FumoData | undefined;
+    get list(): FumoData[];
+    get random(): FumoData;
     request<T extends boolean>(path: string): Promise<T extends true ? FumoData[] : FumoData>;
     updateFumoCache(): Promise<void>;
     fetchFumos(): Promise<FumoData[]>;

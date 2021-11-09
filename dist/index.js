@@ -12,14 +12,11 @@ class FumoClient {
         if (this.fetchAllFumos)
             this.updateFumoCache();
     }
-    get allFumos() {
+    get list() {
         return [...this.cache.values()];
     }
-    get randomFumo() {
-        return this.allFumos[Math.floor(Math.random() * this.allFumos.length)];
-    }
-    getFumo(id) {
-        return this.cache.get(id);
+    get random() {
+        return this.list[Math.floor(Math.random() * this.list.length)];
     }
     async request(path) {
         const res = await node_fetch_1.default(`${this.url}/${path}`);
