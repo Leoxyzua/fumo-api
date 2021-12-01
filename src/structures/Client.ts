@@ -27,9 +27,8 @@ export class FumoClient {
 
     /** Request to the fumo api */
     async request<T extends boolean>(path: string):
-        Promise<(T extends true
-            ? FumoData[]
-            : FumoData) | undefined> {
+        // @ts-nocheck
+        Promise<(T extends true ? FumoData[] : FumoData) | undefined> {
         const res = await fetch(`${this.url}/${path}`);
         if (res.headers.get("content-type") !== 'application/json'
             && path.includes('/')) return;
