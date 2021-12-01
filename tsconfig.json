@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "strict": true,
+    "strict": false,
     "lib": ["ESNext"],
     "module": "commonjs",
     "moduleResolution": "node",
@@ -10,10 +10,9 @@
     "allowJs": true,
     "importHelpers": true,
     "sourceMap": true,
-    "skipLibCheck": true,
     "removeComments": true,
     "esModuleInterop": true,
   },
   "include": ["./src"],
-  "exclude": ["./node_modules", "./dist"]
+  "exclude": ["./node_modules"]
 }
