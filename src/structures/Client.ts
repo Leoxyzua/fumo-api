@@ -27,13 +27,12 @@ export class FumoClient {
 
     /** Request to the fumo api */
     async request<T extends boolean>(path: string):
-        // @ts-nocheck
         Promise<(T extends true ? FumoData[] : FumoData) | undefined> {
         const res = await fetch(`${this.url}/${path}`);
         if (res.headers.get("content-type") !== 'application/json'
             && path.includes('/')) return;
 
-        return await res.json();
+        return await res.json() as any;
     }
 
     /** Update the fumo cache  */
