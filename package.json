@@ -13,7 +13,7 @@
     "url": "git+https://github.com/Leoxyzua/fumo-api.git"
   },
   "files": [
-    "dist"
+    "dist/**/*"
   ],
   "keywords": [
     "fumo",
