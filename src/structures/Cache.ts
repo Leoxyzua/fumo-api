@@ -12,8 +12,9 @@ export class FumoCache extends Map<string, FumoData> {
         return [...this.values()];
     }
 
-    public random(filter: RandomCacheFilter): FumoData | undefined
     /** A random fumo */
+    public random(): FumoData
+    public random(filter: RandomCacheFilter): FumoData | undefined
     public random(filter?: RandomCacheFilter) {
         const array = filter ? this.list.filter(filter) : this.list
         return array[Math.floor(Math.random() * array.length)];
