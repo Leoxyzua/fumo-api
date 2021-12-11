@@ -101,8 +101,10 @@ typings/
 
 # TernJS port file
 .tern-port
-#prueba
+# Tests
+tests
 /prueba.js
 /node_modules/
 .npmrc
 .vscode
+dist

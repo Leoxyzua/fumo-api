@@ -8,7 +8,7 @@ This is a fork of the [fumo api](https://github.com/Nosesisaid/fumo-api), but be
 
 ## Example Usage
 ```js
-const { FumoClient } = require('fumo-api');
+const { FumoClient } = require('@leoua/fumo-api');
 
 const client = new FumoClient(true);
 
