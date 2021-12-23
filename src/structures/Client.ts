@@ -20,7 +20,7 @@ export class FumoClient {
     public url = 'https://fumoapi.herokuapp.com';
 
     public constructor(fetchAllFumos?: boolean) {
-        this.fetchAllFumos = fetchAllFumos ?? true;
+        this.fetchAllFumos = fetchAllFumos || true;
 
         if (this.fetchAllFumos) this.updateFumoCache();
     }
