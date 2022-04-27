@@ -1,6 +1,6 @@
 {
     "name": "@leoua/fumo-api",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "description": "A package to interact with the Fumo API",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
