@@ -1,52 +1,48 @@
-import { FumoCache } from './Cache';
+import { FumoCache, CacheOptions } from './Cache';
 import fetch from 'node-fetch';
 
 export interface FumoData {
     _id: string;
     URL: string;
     __v: number;
-};
+}
 
 /**
- * Client class for interacting with the cache and the fumo api
+ * Client class for interacting with the cache and the Fumo api
  * @since 1.0.0
  */
 export class FumoClient {
-    public fetchAllFumos: boolean;
+    /** Use cache instead of requests */
+    public cacheOptions: CacheOptions;
 
     /** The fumo cache, it will be empty if `fetchAllFumos` is set to false. */
     public cache = new FumoCache();
+
     /** The fumo api URl */
-    public url = 'https://fumoapi.herokuapp.com';
+    public url = 'https://fumoapi.nosesisaid.me/';
 
-    public constructor(fetchAllFumos?: boolean) {
-        this.fetchAllFumos = fetchAllFumos || true;
+    public constructor(cacheOptions: CacheOptions) {
+        this.cacheOptions = cacheOptions;
 
-        if (this.fetchAllFumos) this.updateFumoCache();
-    }
+        if (this.cacheOptions.customCache) {
+            const isValid = this.validateCustomCache();
 
-    /** Request to the fumo api */
-    public async request<T extends boolean>(path: string):
-        Promise<(T extends true ? FumoData[] : FumoData) | undefined> {
-        const res = await fetch(`${this.url}/${path}`);
-        if (res.headers.get("content-type") !== 'application/json'
-            && path.includes('/')) return;
+            if (!isValid)
+                throw new Error(
+                    'Custom cache provided isn\'t an instance of "FumoData[]"'
+                );
 
-        return await res.json() as any;
-    }
-
-    /** Update the fumo cache  */
-    public async updateFumoCache() {
-        const fumos = await this.fetchFumos();
-
-        fumos
-            .filter(({ _id }) => !this.cache.has(_id))
-            .forEach((fumo) => this.cache.set(fumo._id, fumo));
+            for (const value of this.cacheOptions.customCache) {
+                this.cache.set(value._id, value);
+            }
+        } else if (this.cacheOptions.enabled) {
+            this.updateFumoCache();
+        }
     }
 
     /** Request for all the fumos in the fumo-api */
     public async fetchFumos() {
-        const data = await this.request<true>("fumos");
+        const data = await this.request<true>('fumos');
         return data!;
     }
 
@@ -57,7 +53,39 @@ export class FumoClient {
 
     /** Request a random fumo */
     public async fetchRandomFumo() {
-        const data = await this.request<false>("random");
+        const data = await this.request<false>('random');
         return data!;
+    }
+
+    /** Request to the fumo api */
+    public async request<T extends boolean>(
+        path: string
+    ): Promise<(T extends true ? FumoData[] : FumoData) | undefined> {
+        const res = await fetch(`${this.url}/${path}`);
+
+        if (
+            res.headers.get('content-type') !== 'application/json' &&
+            path.includes('/')
+        )
+            return;
+
+        return res.json();
+    }
+
+    /** Update the fumo cache  */
+    public async updateFumoCache() {
+        const fumos = await this.fetchFumos();
+        const notCachedFumos = fumos.filter(({ _id }) => !this.cache.has(_id));
+
+        for (const fumo of notCachedFumos) this.cache.set(fumo._id, fumo);
+    }
+
+    /** Check if the custom cache provided is valid */
+    public validateCustomCache() {
+        const cache = this.cacheOptions.customCache!;
+
+        return cache.every((value) => {
+            return 'URL' in value || '_id' in value;
+        });
     }
 }
