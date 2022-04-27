@@ -19,7 +19,7 @@ export class FumoClient {
     public cache = new FumoCache();
 
     /** The fumo api URl */
-    public url = 'https://fumoapi.nosesisaid.me/';
+    public url = 'https://fumoapi.nosesisaid.me';
 
     public constructor(cacheOptions: CacheOptions) {
         this.cacheOptions = cacheOptions;
