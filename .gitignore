@@ -103,7 +103,6 @@ typings/
 .tern-port
 # Tests
 tests
-/prueba.js
 /node_modules/
 .npmrc
 .vscode

@@ -4,7 +4,8 @@ import fetch from 'node-fetch';
 export interface FumoData {
     _id: string;
     URL: string;
-    __v: number;
+    caption: string;
+    fumos: string[];
 }
 
 /**
@@ -19,7 +20,7 @@ export class FumoClient {
     public cache = new FumoCache();
 
     /** The fumo api URl */
-    public url = 'https://fumoapi.nosesisaid.me';
+    public url = 'https://fumo-api.nosesisaid.me';
 
     public constructor(cacheOptions: CacheOptions) {
         this.cacheOptions = cacheOptions;
