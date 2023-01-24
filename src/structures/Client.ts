@@ -16,14 +16,19 @@ export class FumoClient {
     /** Use cache instead of requests */
     public cacheOptions: CacheOptions;
 
+    /** Default cache options */
+    public defaultCacheOptions: CacheOptions = {
+        enabled: true
+    };
+
     /** The fumo cache, it will be empty if `fetchAllFumos` is set to false. */
     public cache = new FumoCache();
 
     /** The fumo api URl */
-    public url = 'https://fumo-api.nosesisaid.me';
+    public url = 'https://fumo-api.nosesisaid.com';
 
-    public constructor(cacheOptions: CacheOptions) {
-        this.cacheOptions = cacheOptions;
+    public constructor(cacheOptions?: CacheOptions) {
+        this.cacheOptions = cacheOptions || this.defaultCacheOptions;
 
         if (this.cacheOptions.customCache) {
             const isValid = this.validateCustomCache();

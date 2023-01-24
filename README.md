@@ -22,7 +22,9 @@ const client = new FumoClient({ cache: false });
 ## Working With Cache
 
 ```js
-const client = new FumoClient({ cache: true });
+const client = new FumoClient({
+    cache: true // Optional, default is set to true
+});
 
 // Wait a bit for the fumos to get cached
 setTimeout(function () {
@@ -42,7 +44,7 @@ const myFumos = [
 ];
 
 const client = new FumoClient({
-    cache: true,
+    cache: true, // Optional, default is set to true
     customCache: myFumos,
 });
 

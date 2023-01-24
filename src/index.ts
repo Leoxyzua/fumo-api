@@ -1,2 +1,2 @@
 export * from './structures/Client';
-export * from './structures/Cache'
+export * from './structures/Cache';
